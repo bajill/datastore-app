@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { ChartModule } from 'angular2-highcharts';
+
 
 import { AppService } from './app.service';
 
@@ -14,6 +16,8 @@ import { AboutComponent } from './pages/about/about.component';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
 
 import { AppRoutingModule } from './app-routing.module';
+import { ChartComponent } from './chart/chart.component';
+
 
 @NgModule({
   declarations: [
@@ -23,13 +27,15 @@ import { AppRoutingModule } from './app-routing.module';
     NamespaceChildComponent,
     HomeComponent,
     AboutComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ChartModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

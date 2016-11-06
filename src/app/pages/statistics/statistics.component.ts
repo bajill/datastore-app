@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ChartModule } from 'angular2-highcharts'; 
 
 @Component({
   selector: 'app-statistics',

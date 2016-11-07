@@ -1,31 +1,35 @@
-<nav class="navbar navbar-dark bg-faded">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="http://bootbites.com">Datastore manager</a>
-    </div> 
-    <button class="navbar-toggler hidden-md-up pull-xs-right" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
-    &#9776;
-    </button>
-    <div class="collapse navbar-toggleable-sm" id="exCollapsingNavbar">
-        <ul class="nav navbar-nav pull-sm-right">
-            <li class="nav-item active center">
-                <a [routerLink]="['/home']" routerLinkActive="active" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item center">
-                <a [routerLink]="['/datastore']" routerLinkActive="active" class="nav-link">Datastore</a>
-            </li>
-            <li class="nav-item center">
-                <a [routerLink]="['/userdatastore']" routerLinkActive="active" class="nav-link">User datastore</a>
-            </li>
-            <li class="nav-item center">
-                <a [routerLink]="['/statistics']" routerLinkActive="active" class="nav-link">Statistics</a>
-            </li>
-            <li class="nav-item center">
-                <a [routerLink]="['/about']" routerLinkActive="active" class="nav-link">About</a>
+<div class="body-wrapper">
+    <nav class="navbar navbar-dark bg-faded">
+    <div class="nav-wrapper">
+        <div class="nav-logo">
+             <img src="assets/dsmanager_logo2.png" class="img-responsive" alt="dsmanager_logo"> 
+        </div>
+        <button class="navbar-toggler hidden-md-up pull-xs-right" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+             &#9776;
+        </button>
+        <div class="collapse navbar-toggleable-sm" id="exCollapsingNavbar">
+            <ul class="nav navbar-nav pull-sm-right">
+                <li class="nav-item center">
+                    <a [routerLink]="['/home']" routerLinkActive="active" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item center">
+                    <a [routerLink]="['/datastore']" routerLinkActive="active" class="nav-link">Datastore</a>
+                </li>
+                <li class="nav-item center">
+                    <a [routerLink]="['/userdatastore']" routerLinkActive="active" class="nav-link">User datastore</a>
+                </li>
+                <li class="nav-item center">
+                    <a [routerLink]="['/statistics']" routerLinkActive="active" class="nav-link">Statistics</a>
+                </li>
+                <li class="nav-item center">
+                    <a [routerLink]="['/about']" routerLinkActive="active" class="nav-link">About</a>
 
-            </li>
-        </ul>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
-<div id="page-wrap"> 
+<div id="page-wrap">
     <router-outlet></router-outlet>
+</div>
 </div>

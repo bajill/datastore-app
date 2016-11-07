@@ -16,6 +16,8 @@ import { StatisticsComponent } from './pages/statistics/statistics.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ChartComponent } from './chart/chart.component';
+import { DatastoreComponent } from './pages/datastore/datastore.component';
+import { UserDatastoreComponent } from './pages/user-datastore/user-datastore.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { ChartComponent } from './chart/chart.component';
     HomeComponent,
     AboutComponent,
     StatisticsComponent,
-    ChartComponent
+    ChartComponent,
+    DatastoreComponent,
+    UserDatastoreComponent
   ],
   imports: [
     BrowserModule,

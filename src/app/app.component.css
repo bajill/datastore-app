@@ -19,3 +19,11 @@ a {
 .navbar-centered .nav > li > a {
     display: inline-block;
 }
+
+#page-wrap {
+     width: 800px;
+     margin: 0 auto;
+     padding: 15px;
+     width: 100%;
+     text-align: center;
+}

@@ -15,7 +15,6 @@ export class AppService {
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
     loadDataStore(): any {
-        console.log("loadUnits");
         this.headers.append('Authorization', "Basic " + btoa("admin:district"));
         return Observable.create(observer => {
           this.http

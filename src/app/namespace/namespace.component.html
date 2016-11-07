@@ -1,7 +1,17 @@
 <div class="app">
+    <div class="curNamespace"> /{{curNamespace}}
     <button type="button" class="btn btn-primary btn-back" (click)="loadBack()">Back</button>
+    <div>
     <br>
-    <div class="btn-group-vertical" *ngFor="let app of AppNamespace;">
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let app of AppNamespace;">
+            <div class='li-elem' (click)="loadChild(app)">{{app}}</div>
+        </li>
+    </ul>
+    <!---
+    <div class="btn-group-horizontal" *ngFor="let app of AppNamespace;">
         <button type="button" class="btn btn-primary btn-nav" (click)="loadChild(app)">{{app}}</button>
+        <br>    
     </div>
+    -->
 </div>

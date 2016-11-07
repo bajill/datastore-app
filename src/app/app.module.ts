@@ -10,7 +10,6 @@ import { AppService } from './app.service';
 import { AppComponent } from './app.component';
 import { NavComponent } from './ui/nav/nav.component';
 import { NamespaceComponent } from './namespace/namespace.component';
-import { NamespaceChildComponent } from './namespace-child/namespace-child.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
@@ -24,7 +23,6 @@ import { ChartComponent } from './chart/chart.component';
     AppComponent,
     NavComponent,
     NamespaceComponent,
-    NamespaceChildComponent,
     HomeComponent,
     AboutComponent,
     StatisticsComponent,

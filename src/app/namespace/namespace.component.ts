@@ -20,6 +20,7 @@ export class NamespaceComponent implements OnInit {
   public AppNamespace = [];
   private AppNamespaces;
   private curNamespace = "";
+  private value;
 
   model = new AppNamespace('');
 
@@ -30,10 +31,26 @@ export class NamespaceComponent implements OnInit {
   }
 
   loadChild(path: string):void {
-    this.curNamespace += path + "/"
-    
+    console.log(this.curNamespace)
+    if(this.curNamespace !== ""){
+      console.log("notempty")
+      this.loadValue(path)
+      return
+    }
+
+    this.curNamespace += path + "/"    
     this.appService.loadChild(this.curNamespace)
     .subscribe(res => this.updateList(res))  
+  }
+  
+  loadValue(path: string): void {
+    this.curNamespace += path + "/"
+    this.appService.loadChild(this.curNamespace)
+    .subscribe(res => this.value)
+  }
+
+  updateValues(AppNamespaces): void {
+    
   }
 
   updateList(AppNamespaces):void {

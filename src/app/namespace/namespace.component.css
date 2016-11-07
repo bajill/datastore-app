@@ -3,20 +3,23 @@
     border-color: #215e8c;
     margin-top: 15px;
     text-align: center;
-    display: block;
-    width: 100%;
+
+   
+
 }
 .btn-nav {
     background-color: #215e8c;
     border-color: #215e8c;
     text-align: center;
-    display: block;
-    width: 100%;
+    
+    
 }
 .btn:hover {
     background-color: #3071A3;
 }
 
-.btn {
-    display: block;
+
+
+.curNamespace {
+   
 }

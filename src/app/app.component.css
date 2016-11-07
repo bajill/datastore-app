@@ -1,18 +1,21 @@
-.top {
-    position:absolute;
-    left:0; right:0;
-    height: 0px;
+.navbar {
+    background-color: #215e8c;
 }
-.left {
-    position:absolute;
-    left:0; top:0px; bottom: 0;
-    width: 178px;
-}
-.main {
-    position: absolute;
-    left:178px; top:0px; right:0; bottom:0;
+a {
+    font-family: 'Open Sans',sans-serif;
+    color: black;
     text-align: center;
 }
-.top { background: blue; }
-.left { background: #215e8c; }
-.main { background: white; }
+.navbar-centered .navbar-nav {
+    float: none;
+    
+}
+.navbar-centered .navbar-nav > li {
+    float: none;
+}
+.navbar-centered .nav > li {
+    display: inline;
+}
+.navbar-centered .nav > li > a {
+    display: inline-block;
+}

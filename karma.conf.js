@@ -17,11 +17,11 @@ module.exports = function (config) {
     preprocessors: {
       './src/test.ts': ['angular-cli']
     },
-    remapIstanbulReporter: {
+   remapIstanbulReporter: {
       reports: {
         html: 'coverage',
         lcovonly: './coverage/coverage.lcov'
-      }
+     }
     },
     angularCli: {
       config: './angular-cli.json',

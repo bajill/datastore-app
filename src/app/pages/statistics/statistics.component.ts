@@ -7,6 +7,7 @@ import {ChartModule } from 'angular2-highcharts';
   styleUrls: ['./statistics.component.css']
 })
 export class StatisticsComponent implements OnInit {
+  title = 'Statistics';
 
   constructor() { }
 

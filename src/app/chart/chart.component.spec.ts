@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
+import { ChartModule } from 'angular2-highcharts';
 import { ChartComponent } from './chart.component';
 
 describe('ChartComponent', () => {
@@ -11,7 +12,8 @@ describe('ChartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChartComponent ]
+      declarations: [ ChartComponent ],
+      imports: [ChartModule]
     })
     .compileComponents();
   }));
@@ -21,5 +23,12 @@ describe('ChartComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+ 
 
+
+it('should create', () => expect(component).toBeDefined());
+
+
+//it('should hold title'), () => {
+//}
 });

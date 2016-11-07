@@ -1,17 +1,31 @@
 <div class="app">
     <div class="curNamespace"> /{{curNamespace}}
-    <button type="button" class="btn btn-primary btn-back" (click)="loadBack()">Back</button>
-    <div>
-    <br>
-    <ul class="list-group">
-        <li class="list-group-item" *ngFor="let app of AppNamespace;">
-            <div class='li-elem' (click)="loadChild(app)">{{app}}</div>
-        </li>
-    </ul>
-    <!---
+        <button type="button" class="btn btn-primary btn-back" (click)="loadBack()">Back</button>
+        <div>
+            <br>
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let app of AppNamespace;">
+                    <div class='li-elem' (click)="loadChild(app)">{{app}}</div>
+                </li>
+            </ul>
+            <div *ngIf="value">
+                <div class="form-group">
+                    <label for="key">Key:</label>
+                    <div class="update">
+                        <button type="button" class="btn btn-info">Metadata</button>
+                        <button type="button" class="btn btn-success">Save</button>
+                        <button type="button" class="btn btn-danger">Cancel</button>
+                        <textarea class="form-control" rows="5" id="key">{{value}}</textarea>
+                        
+
+
+                    </div>
+                </div>
+
+                <!---
     <div class="btn-group-horizontal" *ngFor="let app of AppNamespace;">
         <button type="button" class="btn btn-primary btn-nav" (click)="loadChild(app)">{{app}}</button>
         <br>    
     </div>
     -->
-</div>
+            </div>

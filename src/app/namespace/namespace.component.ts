@@ -31,9 +31,10 @@ export class NamespaceComponent implements OnInit {
   }
 
   loadChild(path: string):void {
-    console.log(this.curNamespace)
+    
     if(this.curNamespace !== ""){
-      console.log("notempty")
+      console.log("loadValues")
+      this.AppNamespace = []
       this.loadValue(path)
       return
     }
@@ -46,11 +47,13 @@ export class NamespaceComponent implements OnInit {
   loadValue(path: string): void {
     this.curNamespace += path + "/"
     this.appService.loadChild(this.curNamespace)
-    .subscribe(res => this.value)
+    .subscribe(res => this.updateValues(res))
+    
   }
 
   updateValues(AppNamespaces): void {
-    
+    this.value = JSON.stringify(AppNamespaces, null, 2);
+    console.log(this.value)
   }
 
   updateList(AppNamespaces):void {
@@ -61,6 +64,7 @@ export class NamespaceComponent implements OnInit {
   }
 
   loadBack():void {
+    this.value = ""
     if (this.curNamespace.length > 0){
     this.curNamespace = this.curNamespace.replace(new RegExp("([a-zA-Z0-9\_:-]+)/$"), "");
   }

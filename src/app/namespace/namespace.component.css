@@ -1,25 +1,28 @@
 .btn-back {
     background-color: #215e8c;
     border-color: #215e8c;
-    margin-top: 15px;
+    margin: 15px 0;
     text-align: center;
-
-   
 
 }
 .btn-nav {
     background-color: #215e8c;
     border-color: #215e8c;
     text-align: center;
-    
-    
+        
 }
 .btn:hover {
     background-color: #3071A3;
 }
 
+.btn-back{
+    float: right;
+}
 
+.btn {
+  width: 95px; 
+}
 
-.curNamespace {
-   
+.edit-group {
+    float: right;
 }

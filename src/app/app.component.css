@@ -49,10 +49,10 @@ a {
 .nav-logo {
      float: left;
      padding: 5px;
-     padding-right: 30px;
+     padding-left: 15px;
 }
 
 .navbar-nav {
     float: right;
-
+    padding-right: 15px;
 }

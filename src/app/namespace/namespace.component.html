@@ -1,31 +1,32 @@
 <div class="app">
-    <div class="curNamespace"> /{{curNamespace}}
+    <div class="curNamespace">
+        <h3>/{{curNamespace}}</h3>
+    </div>
+    <div class="container">
         <button type="button" class="btn btn-primary btn-back" (click)="loadBack()">Back</button>
-        
-            
-            <ul class="list-group">
-                <li class="list-group-item" *ngFor="let app of AppNamespace;">
-                    <div class='li-elem' (click)="loadChild(app)">{{app}}</div>
-                </li>
-            </ul>
-            <div *ngIf="value">
-                <div class="form-group">
-
-                    <div class="update">
-                        <button type="button" class="btn btn-info">Metadata</button>
-                        <button type="button" class="btn btn-success">Save</button>
-                        <button type="button" class="btn btn-danger">Cancel</button>
-                        <textarea class="form-control" rows="5" id="key">{{value}}</textarea>
+    </div>
+    <div *ngIf="value">
+        <div class="form-group edit-group">
+            <button type="button" class="btn btn-info">Metadata</button>
+            <button type="button" class="btn btn-success">Save</button>
+            <button type="button" class="btn btn-danger">Cancel</button>
+        </div>
+        <textarea class="form-control" rows="10" id="key">{{value}}</textarea>
+    </div>
 
 
+    <div class="container">
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let app of AppNamespace;">
+                <div class='li-elem' (click)="loadChild(app)">{{app}}</div>
+            </li>
+        </ul>
 
-                    </div>
-                </div>
 
-                <!---
+        <!---
     <div class="btn-group-horizontal" *ngFor="let app of AppNamespace;">
         <button type="button" class="btn btn-primary btn-nav" (click)="loadChild(app)">{{app}}</button>
         <br>    
     </div>
     -->
-            </div>
+    </div>

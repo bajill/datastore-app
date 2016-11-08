@@ -8,7 +8,6 @@ import { ChartModule } from 'angular2-highcharts';
 import { AppService } from './app.service';
 
 import { AppComponent } from './app.component';
-import { NavComponent } from './ui/nav/nav.component';
 import { NamespaceComponent } from './namespace/namespace.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
@@ -23,7 +22,6 @@ import { UserDatastoreComponent } from './pages/user-datastore/user-datastore.co
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
     NamespaceComponent,
     HomeComponent,
     AboutComponent,

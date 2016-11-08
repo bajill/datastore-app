@@ -29,6 +29,4 @@ describe('ChartComponent', () => {
 it('should create', () => expect(component).toBeDefined());
 
 
-//it('should hold title'), () => {
-//}
 });

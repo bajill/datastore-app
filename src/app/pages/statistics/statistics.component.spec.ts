@@ -34,8 +34,9 @@ describe('StatisticsComponent', () => {
 
   it('should create', () => expect(component).toBeDefined());
 
-  it('should display Statistics title', () => {
+ it('should display Statistics title', () => {
     fixture.detectChanges();
     expect(el.textContent).toContain(component.title);
   });
+
 });

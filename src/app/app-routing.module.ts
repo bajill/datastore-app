@@ -2,7 +2,6 @@ import { NgModule }     from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AboutComponent }  from './pages/about/about.component';
-import { AppComponent }  from './app.component';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
 import { HomeComponent } from './pages/home/home.component';
 

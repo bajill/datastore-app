@@ -62,8 +62,10 @@ export class NamespaceComponent implements OnInit {
     .subscribe(res => this.listValues(res));
   }
 
-  listMetaData(MetaData): any {
-    this.metaData = JSON.stringify(MetaData, null, 2);
+  listMetaData(metaData): any {
+    var key = "value";
+    delete metaData[key];
+    this.metaData = JSON.stringify(metaData, null, 2);
   }
 
   listValues(AppNamespaces): void {

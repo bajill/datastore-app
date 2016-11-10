@@ -58,6 +58,7 @@ a {
     text-align: center;
   }
   .navbar-nav > li {
+    float: none;
     display: inline-block;
   }
   .navbar-nav > li.navbar-right {

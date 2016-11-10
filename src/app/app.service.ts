@@ -7,54 +7,24 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AppService {
 
-    constructor(private http: Http) { }
+  constructor(private http: Http) { }
 
-    private serverUrl = 'https://play.dhis2.org/demo/api';
-    private basicAuth = `Basic ${btoa('admin:district')}`;
+  private serverUrl = 'https://play.dhis2.org/dev/api';
+  private basicAuth = `Basic ${btoa('admin:district')}`;
 
-    private headers = new Headers({ 'Content-Type': 'application/json' });
+  private headers = new Headers({ 'Content-Type': 'application/json' });
 
-    loadDataStore(): any {
-        this.headers.append('Authorization', "Basic " + btoa("admin:district"));
-        return Observable.create(observer => {
-          this.http
-            .get(`${this.serverUrl}/25/dataStore`, {headers: this.headers})
-            .map(res => res.json())
-            .subscribe((data) => {
-             observer.next(data);
-             observer.complete();
-          })
+  loadFromDataStore(path: string): any {
+    console.log('load from store ' + path);
+    this.headers.append('Authorization', 'Basic ' + btoa('admin:district'));
+    return Observable.create(observer => {
+      this.http
+        .get(`${this.serverUrl}/25/dataStore/${path}`, { headers: this.headers })
+        .map(res => res.json())
+        .subscribe((data) => {
+          observer.next(data);
+          observer.complete();
         });
-    }
-
-    loadChild(path: string): any {
-        console.log("loadChilds"  + path);
-
-        this.headers.append('Authorization', "Basic " + btoa("admin:district"));
-        return Observable.create(observer => {
-          this.http
-            .get(`${this.serverUrl}/25/dataStore/${path}`, {headers: this.headers})
-            .map(res => res.json())
-            .subscribe((data) => {
-             observer.next(data);
-             observer.complete();
-          });
-        });
-
-    }
-
-    loadBack(path: string): any {
-      console.log("loadback: " + path)
-      this.headers.append('Authorization', "Basic " + btoa("admin:district"));
-        return Observable.create(observer => {
-          this.http
-            .get(`${this.serverUrl}/25/dataStore/${path}`, {headers: this.headers})
-            .map(res => res.json())
-            .subscribe((data) => {
-             observer.next(data);
-             observer.complete();
-          });
-        });
-    }
-
+    });
+  }
 }

@@ -11,65 +11,69 @@ import { AppNamespace } from './namespace';
 export class NamespaceComponent implements OnInit {
 
   constructor(private appService: AppService) {
-    this.loadList()
+    this.loadList();
   }
 
   ngOnInit() {
   }
 
   public AppNamespace = [];
-  private AppNamespaces;
-  private curNamespace = "";
+  private curNamespace = '';
   private value;
+  private metaData;
 
   model = new AppNamespace('');
 
-  loadList():void {
-    console.log("loading")
-    this.appService.loadDataStore()
-    .subscribe(res => this.updateList(res))        
+  loadList(): void {
+    console.log('loading');
+    this.appService.loadFromDataStore('')
+    .subscribe(res => this.updateList(res));
   }
 
-  loadChild(path: string):void {
-    
-    if(this.curNamespace !== ""){
-      console.log("loadValues")
-      this.AppNamespace = []
-      this.loadValue(path)
-      return
+  loadChild(path: string): void {
+
+    if (this.curNamespace !== '') {
+      console.log('loadValues');
+      this.AppNamespace = [];
+      this.loadValue(path);
+      return;
     }
 
-    this.curNamespace += path + "/"    
-    this.appService.loadChild(this.curNamespace)
-    .subscribe(res => this.updateList(res))  
+    this.curNamespace += path + '/';
+    this.appService.loadFromDataStore(this.curNamespace)
+    .subscribe(res => this.updateList(res));
   }
-  
+
+  loadMetaData(): void {
+
+  }
+
   loadValue(path: string): void {
-    this.curNamespace += path + "/"
-    this.appService.loadChild(this.curNamespace)
-    .subscribe(res => this.updateValues(res))
-    
+    this.curNamespace += path + '/';
+    this.appService.loadFromDataStore(this.curNamespace)
+    .subscribe(res => this.updateValues(res));
+
   }
 
   updateValues(AppNamespaces): void {
     this.value = JSON.stringify(AppNamespaces, null, 2);
-    console.log(this.value)
+    console.log(this.value);
   }
 
-  updateList(AppNamespaces):void {
+  updateList(AppNamespaces): void {
     this.AppNamespace = [];
-    for(let i = 0; i < AppNamespaces.length; i++) {
+    for (let i = 0; i < AppNamespaces.length; i++) {
             this.AppNamespace.push(AppNamespaces[i]);
     }
   }
 
-  loadBack():void {
-    this.value = ""
-    if (this.curNamespace.length > 0){
-    this.curNamespace = this.curNamespace.replace(new RegExp("([a-zA-Z0-9\_:-]+)/$"), "");
+  loadBack(): void {
+    this.value = '';
+    if (this.curNamespace.length > 0) {
+    this.curNamespace = this.curNamespace.replace(new RegExp('([a-zA-Z0-9\_:-]+)/$'), '');
   }
-    this.appService.loadBack(this.curNamespace)
-    .subscribe(res => this.updateList(res))  
+    this.appService.loadFromDataStore(this.curNamespace)
+    .subscribe(res => this.updateList(res));
 
   }
 

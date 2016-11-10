@@ -14,6 +14,13 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## To use mockdata.py script to fill datastore and userdatastore
+The script depends on a HTTP library for python called Requests,
+get Requests by doing this:
+```
+pip install requests
+```
+
+To run the python script follow instructions below:
 ```
 python mockdata.py [argument]
 ```

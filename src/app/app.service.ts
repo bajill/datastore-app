@@ -14,12 +14,25 @@ export class AppService {
 
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
-  loadFromDataStore(path: string): any {
+  getFromDataStore(path: string): any {
     console.log('load from store ' + path);
     this.headers.append('Authorization', 'Basic ' + btoa('admin:district'));
     return Observable.create(observer => {
       this.http
         .get(`${this.serverUrl}/25/dataStore/${path}`, { headers: this.headers })
+        .map(res => res.json())
+        .subscribe((data) => {
+          observer.next(data);
+          observer.complete();
+        });
+    });
+  }
+
+  updateInDataStore(path: string, value: string): any {
+    this.headers.append('Authorization', 'Basic ' + btoa('admin:district'));
+    return Observable.create(observer => {
+      this.http
+        .put(`${this.serverUrl}/25/dataStore${path}${value}`, { headers: this.headers })
         .map(res => res.json())
         .subscribe((data) => {
           observer.next(data);

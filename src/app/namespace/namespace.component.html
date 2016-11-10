@@ -4,17 +4,22 @@
         <h3>/{{curNamespace}}</h3>
     </div>
     <div class="container">
+        <pre>
+            {{metaData}}
+        </pre>
         <button type="button" class="btn btn-primary btn-back" (click)="loadBack()">Back</button>
     </div>
     <div *ngIf="value">
+        
         <div class="form-group edit-group">
             <button type="button" class="btn btn-info">Metadata</button>
-            <button type="button" class="btn btn-success">Save</button>
+            <button type="submit" class="btn btn-success" (click)="updateInDataStore(key)">Update</button>
             <button type="button" class="btn btn-danger" (click)="loadBack()">Cancel</button>
         </div>
+        
         <textarea class="form-control" rows="10" id="key">{{value}}</textarea>
+      
     </div>
-
 
     <div class="container">
         <ul class="list-group">

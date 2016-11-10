@@ -26,3 +26,8 @@
 .edit-group {
     float: right;
 }
+
+#update p {
+    text-align: center;
+    font-style: bold;
+}

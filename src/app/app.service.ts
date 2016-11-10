@@ -29,10 +29,11 @@ export class AppService {
   }
 
   updateInDataStore(path: string, value: string): any {
+    console.log("AppService, Path: " + path +  " Value: " + value);
     this.headers.append('Authorization', 'Basic ' + btoa('admin:district'));
     return Observable.create(observer => {
       this.http
-        .put(`${this.serverUrl}/25/dataStore${path}${value}`, { headers: this.headers })
+        .put(`${this.serverUrl}/25/dataStore/${path}`, value, { headers: this.headers })
         .map(res => res.json())
         .subscribe((data) => {
           observer.next(data);

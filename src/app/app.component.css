@@ -64,4 +64,8 @@ a {
   .navbar-nav > li.navbar-right {
     float: right !important;
   }
+
+  .navbar-toggler {
+      float: right;
+  }
 }

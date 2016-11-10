@@ -20,6 +20,7 @@ export class NamespaceComponent implements OnInit {
   private curNamespace = '';
   private value;
   private metaData;
+  private updateOk;
 
   model = new AppNamespace('');
 
@@ -52,14 +53,16 @@ export class NamespaceComponent implements OnInit {
   loadValue(path: string): void {
     this.curNamespace += path + '/';
     this.appService.getFromDataStore(this.curNamespace)
-    .subscribe(res => this.listValues(res));
+      .subscribe(res => this.listValues(res));
 
   }
 
-  updateInDataStore(newValue: string): any {
+  updateInDataStore(): any {
+    var newValue = (<HTMLInputElement>document.getElementById("key")).value;
     console.log('update ' + newValue);
     this.appService.updateInDataStore(this.curNamespace, newValue)
-    .subscribe(res => this.listValues(res));
+      .subscribe(res => this.listValues(res));
+    this.updateOk = "Successfully updated value";
   }
 
   listMetaData(metaData): any {
@@ -81,6 +84,7 @@ export class NamespaceComponent implements OnInit {
   }
 
   loadBack(): void {
+    this.updateOk = '';
     this.value = '';
     this.metaData = '';
     if (this.curNamespace.length > 0) {

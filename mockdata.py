@@ -13,7 +13,7 @@ from requests.auth import HTTPBasicAuth
 headers = {"Content-type": "application/json"}
 
 def doRequest(reqURL, payload):
-    r = requests.put(reqURL, data=json.dumps(payload), auth=HTTPBasicAuth('admin', 'district'), headers=headers)
+    r = requests.post(reqURL, data=json.dumps(payload), auth=HTTPBasicAuth('admin', 'district'), headers=headers)
     print r.status_code
 
 def generatePayload():

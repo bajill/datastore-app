@@ -43,7 +43,9 @@ a {
 }
 
 .body-wrapper{
-    height: 100%
+    height: 100%;
+    padding-top: 70px;
+
 }
 
 .nav-logo {
@@ -71,5 +73,5 @@ a {
 }
 
 body {
-    padding-top: 70px;
+    padding-top: 58px;
 }

@@ -25,6 +25,7 @@
         </div>
         <button type="button" class="btn btn-primary btn-success" (click)="sendNewKeyValue()">Send</button>
     </div>
+    <br>
     <div *ngIf="value">
         <div id ="update">
             {{updateOk}}
@@ -32,7 +33,7 @@
         <div class="form-group edit-group">
             <button type="submit" class="btn btn-info" (click)="updateInDataStore(key)">Update</button>
         </div>       
-        <textarea class="form-control" rows="10" id="key">{{value}}</textarea>     
+        <textarea class="form-control" rows="20" id="key">{{value}}</textarea>     
     </div>
     <div class="container">
         <ul class="list-group">

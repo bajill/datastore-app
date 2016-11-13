@@ -1,8 +1,10 @@
-.btn-back {
+.btn-back .btn-success{
     background-color: #215e8c;
     border-color: #215e8c;
     margin: 15px 0;
     text-align: center;
+    float: right;
+    padding-bottom: 10px;
 
 }
 .btn-nav {
@@ -11,16 +13,12 @@
     text-align: center;
         
 }
-.btn:hover {
+.btn-back:hover {
     background-color: #3071A3;
 }
 
-.btn-back{
-    float: right;
-}
-
 .btn {
-  width: 95px; 
+  width: 95px;
 }
 
 .edit-group {
@@ -30,4 +28,18 @@
 #update p {
     text-align: center;
     font-style: bold;
+}
+
+#newKeyForm {
+    background-color: lightgray;
+    padding: 20px;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 25px;
+    border: 2px solid grey;
+}
+
+#newKeyLabel {
+    font-weight: bold;
+    font-size: 24px;
 }

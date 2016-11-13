@@ -21,6 +21,9 @@ export class NamespaceComponent implements OnInit {
   private value;
   private metaData;
   private updateOk;
+  private newKeyValue: boolean = false;
+  private showNew: boolean = false;
+  private depth: number = 0;
 
   model = new AppNamespace('');
 
@@ -31,6 +34,9 @@ export class NamespaceComponent implements OnInit {
   }
 
   loadChild(path: string): void {
+    this.depth++;
+    this.newKeyValue = false;
+    this.showNewButton();
 
     if (this.curNamespace !== '') {
       console.log('loadValues');
@@ -87,12 +93,57 @@ export class NamespaceComponent implements OnInit {
     this.updateOk = '';
     this.value = '';
     this.metaData = '';
+    this.depth--;
+
+    this.showNewButton();
+    this.newKeyValue = false;
+
     if (this.curNamespace.length > 0) {
     this.curNamespace = this.curNamespace.replace(new RegExp('([a-zA-Z0-9\_:-]+)/$'), '');
   }
     this.appService.getFromDataStore(this.curNamespace)
     .subscribe(res => this.updateList(res));
 
+  }
+
+  showNewButton(): void {
+    if(this.depth === 1) {
+      this.showNew = true;
+    } else {
+      this.showNew = false;
+    }
+  }
+
+  showCreateNew(): void {
+    if(this.newKeyValue) {
+      this.newKeyValue = false;
+    } else {
+      this.newKeyValue = true;
+    }
+  }
+
+  sendNewKeyValue(): void {
+    var key: string = (<HTMLInputElement>document.getElementById("usr")).value;
+    var tempValue: string = (<HTMLInputElement>document.getElementById("comment")).value;
+    
+    if(!key || !tempValue || key === "" || value === "") {
+      alert("Empty key or value field, both needs to be filled out");
+      return;
+    }
+
+    if(this.AppNamespace.some(x=>x===key)) {
+      alert("Key with that name already exists in namespace, choose a different name.");
+      return;
+    }
+
+    var value: string = JSON.stringify(tempValue);
+    var fullpath: string = this.curNamespace;
+    fullpath += key;
+
+    this.newKeyValue = false;
+
+    this.appService.createNew(fullpath, value)
+      .subscribe(res => console.log(res));
   }
 
 }

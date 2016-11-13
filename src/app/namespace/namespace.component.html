@@ -6,16 +6,31 @@
         <pre>
             {{metaData}}
         </pre>
-        <button type="button" class="btn btn-primary btn-back" (click)="loadBack()">Back</button>
+        <div class="button-row row">
+            <span *ngIf="showNew">
+                <button type="button" class="btn btn-primary btn-success" (click)="showCreateNew()">New</button>
+            </span>
+            <button type="button" class="btn btn-primary btn-back" (click)="loadBack()">Back</button>
+        <div>
+    </div>
+    <div id="newKeyForm" *ngIf="newKeyValue">
+        <label id="newKeyLabel">Add new key/value to this namespace</label>
+        <div class="form-group">
+            <label for="usr">Key:</label>
+            <input type="text" class="form-control" id="usr">
+        </div>
+        <div class="form-group">
+            <label for="comment">Value:</label>
+            <textarea class="form-control" rows="10" id="comment"></textarea>
+        </div>
+        <button type="button" class="btn btn-primary btn-success" (click)="sendNewKeyValue()">Send</button>
     </div>
     <div *ngIf="value">
         <div id ="update">
             {{updateOk}}
         </div>
         <div class="form-group edit-group">
-            <button type="button" class="btn btn-info">Metadata</button>
-            <button type="submit" class="btn btn-success" (click)="updateInDataStore(key)">Update</button>
-            <button type="button" class="btn btn-danger" (click)="loadBack()">Cancel</button>
+            <button type="submit" class="btn btn-info" (click)="updateInDataStore(key)">Update</button>
         </div>       
         <textarea class="form-control" rows="10" id="key">{{value}}</textarea>     
     </div>

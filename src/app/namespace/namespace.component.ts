@@ -20,6 +20,7 @@ export class NamespaceComponent implements OnInit {
   private depth: number = 0;
   private dataStore: boolean = false;
   private userDataStore: boolean = false;
+  private encryptChecked: boolean = false;
   model = new AppNamespace('');
 
   constructor(private appService: AppService, private router: Router) {
@@ -144,7 +145,7 @@ export class NamespaceComponent implements OnInit {
         .subscribe(res => this.updateList(res));
     } else if(this.userDataStore) {
       this.appService.getFromDataStore('userDataStore', this.curNamespace)
-      .subscribe(res => this.updateList(res));
+        .subscribe(res => this.updateList(res));
     }
   }
 
@@ -184,12 +185,33 @@ export class NamespaceComponent implements OnInit {
 
     this.newKeyValue = false;
 
-    if(this.dataStore) {
-      this.appService.createNew('dataStore', fullpath, value)
-        .subscribe(res => console.log(res));
-    } else if(this.userDataStore) {
-      this.appService.createNew('userDataStore', fullpath, value)
-        .subscribe(res => console.log(res));
+    if(this.encryptChecked) {
+      if(this.dataStore) {
+        this.appService.createNewEncrypted('dataStore', fullpath, value)
+          .subscribe(res => console.log(res));
+      } else if(this.userDataStore) {
+        this.appService.createNewEncrypted('userDataStore', fullpath, value)
+          .subscribe(res => console.log(res));
+      }
+    } else if(!this.encryptChecked) {
+      if(this.dataStore) {
+        this.appService.createNew('dataStore', fullpath, value)
+          .subscribe(res => console.log(res));
+      } else if(this.userDataStore) {
+        this.appService.createNew('userDataStore', fullpath, value)
+          .subscribe(res => console.log(res));
+      }
+    }
+    this.encryptChecked = false;
+  }
+
+  updateEncryptChecked(event): void {
+    if(event.target.checked) {
+      console.log("checked");
+      this.encryptChecked = true;
+    } else if(!event.target.checked) {
+      console.log("not checked");
+      this.encryptChecked = false;
     }
   }
 }

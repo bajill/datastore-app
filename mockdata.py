@@ -5,16 +5,17 @@ are some more data to work with when we develop our final project.
 """
 
 import sys
-import requests
 import json
 import time
+import requests
 from requests.auth import HTTPBasicAuth
 
-headers = {"Content-type": "application/json"}
+HEADERS = {"Content-type": "application/json"}
 
 def doRequest(reqURL, payload):
-    r = requests.post(reqURL, data=json.dumps(payload), auth=HTTPBasicAuth('admin', 'district'), headers=headers)
-    print r.status_code
+    request = requests.post(reqURL, data=json.dumps(payload),
+                            auth=HTTPBasicAuth('admin', 'district'), headers=HEADERS)
+    print request.status_code
 
 def generatePayload():
     payload = {"first_name": "alex", "last_name": "jones"}
@@ -24,6 +25,12 @@ def generateNamespace():
     namespaces = ["arne/key", "kjetil/key", "per/key", "turid/key", "alfred/key", "joakim/key", "berit/key",
             "arne/key2", "kjetil/key2", "per/key2", "turid/key2", "alfred/key2", "joakim/key2", "berit/key2",
             "arne/key3", "kjetil/key3", "per/key3", "turid/key3", "alfred/key3", "joakim/key3", "berit/key3"]
+    return namespaces
+
+def generateUserData():
+    namespaces = ["facebook/key1", "twitter/key1", "snapchat/key1", "instagram/key1", "myspace/key1", "twitch/key1",
+                "facebook/key2", "twitter/key2", "snapchat/key2", "instagram/key2", "myspace/key2", "twitch/key2",
+                "facebook/key3", "twitter/key3", "snapchat/key3", "instagram/key3", "myspace/key3", "twitch/key3"]
     return namespaces
 
 def mockDataStore():
@@ -39,7 +46,7 @@ def mockDataStore():
 
 def mockUserDataStore():
     userDataStoreURL = "https://play.dhis2.org/dev/api/25/userDataStore/"
-    namespaces = generateNamespace()
+    namespaces = generateUserData()
 
     for name in namespaces:
         userDataStoreURL += name

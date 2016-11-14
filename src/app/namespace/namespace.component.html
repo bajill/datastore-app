@@ -23,6 +23,9 @@
             <label for="comment">Value:</label>
             <textarea class="form-control" rows="10" id="comment"></textarea>
         </div>
+        <div class="checkbox">
+            <label><input id="encrypt" type="checkbox" value="" (change)="updateEncryptChecked($event)">Encrypt</label>
+        </div>
         <button type="button" class="btn btn-primary btn-success" (click)="sendNewKeyValue()">Send</button>
     </div>
     <br>

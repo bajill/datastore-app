@@ -54,4 +54,17 @@ export class AppService {
           });
       });
     }
+
+    createNewEncrypted(store: string, path: string, value: string): any {
+      this.headers.append('Authorization', 'Basic ' + btoa('admin:district'));
+      return Observable.create(observer => {
+        this.http
+          .post(`${this.serverUrl}/25/${store}/${path}?encrypt=true`, value, { headers: this.headers })
+          .map(res => res.json())
+          .subscribe((data) => {
+            observer.next(data);
+            observer.complete();
+          });
+      });
+    }
 }

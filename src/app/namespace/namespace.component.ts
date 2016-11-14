@@ -20,17 +20,18 @@ export class NamespaceComponent implements OnInit {
   private depth: number = 0;
   private dataStore: boolean = false;
   private userDataStore: boolean = false;
+  private storeVersion;
   private encryptChecked: boolean = false;
   model = new AppNamespace('');
 
+
+
   constructor(private appService: AppService, private router: Router) {
-    if(router.url === "/datastore") {
-      this.dataStore = true;
-      this.userDataStore = false;
+    if (router.url === "/datastore") {
+      this.storeVersion = "dataStore";
       console.log("DATASTORE");
-    } else if(router.url === "/userdatastore") {
-      this.userDataStore = true;
-      this.dataStore = false;
+    } else if (router.url === "/userdatastore") {
+      this.storeVersion = "userDataStore";
       console.log("USERDATASTORE" + this.userDataStore + this.dataStore);
     }
     this.loadList();
@@ -39,17 +40,20 @@ export class NamespaceComponent implements OnInit {
   ngOnInit() {
   }
 
+
   loadList(): void {
     console.log('loading');
-    
-    if(this.dataStore) {
-      this.appService.getFromDataStore('dataStore', '')
-        .subscribe(res => this.updateList(res));
-    } else if(this.userDataStore) {
-      this.appService.getFromDataStore('userDataStore', '')
-        .subscribe(res => this.updateList(res));
-    }
+
+
+    this.appService.getFromDataStore(this.storeVersion, '')
+      .subscribe(res => this.updateList(res));
+
+    this.appService.getFromDataStore('userDataStore', '')
+      .subscribe(res => this.updateList(res));
+
   }
+
+
 
   loadChild(path: string): void {
     this.depth++;
@@ -66,45 +70,36 @@ export class NamespaceComponent implements OnInit {
 
     this.curNamespace += path + '/';
 
-    if(this.dataStore) {
-      this.appService.getFromDataStore('dataStore', this.curNamespace)
-        .subscribe(res => this.updateList(res));
-    } else if(this.userDataStore) {
-      this.appService.getFromDataStore('userDataStore', this.curNamespace)
-        .subscribe(res => this.updateList(res));
-    }
+
+    this.appService.getFromDataStore(this.storeVersion, this.curNamespace)
+      .subscribe(res => this.updateList(res));
+
   }
 
   loadMetaData(path: string): void {
-    if(this.dataStore) {
-      this.appService.getFromDataStore('dataStore', this.curNamespace + 'metaData')
-        .subscribe(res => this.listMetaData(res));
-    }
+
+    this.appService.getFromDataStore(this.storeVersion, this.curNamespace + 'metaData')
+      .subscribe(res => this.listMetaData(res));
+
   }
 
   loadValue(path: string): void {
     this.curNamespace += path + '/';
 
-    if(this.dataStore) {
-      this.appService.getFromDataStore('dataStore', this.curNamespace)
-        .subscribe(res => this.listValues(res));
-    } else if(this.userDataStore) {
-      this.appService.getFromDataStore('userDataStore', this.curNamespace)
-        .subscribe(res => this.listValues(res));
-    }
+
+    this.appService.getFromDataStore(this.storeVersion, this.curNamespace)
+      .subscribe(res => this.listValues(res));
+
   }
 
   updateInDataStore(): any {
     var newValue = (<HTMLInputElement>document.getElementById("key")).value;
     console.log('update ' + newValue);
-    
-    if(this.dataStore) {
-      this.appService.updateInDataStore('dataStore', this.curNamespace, newValue)
-        .subscribe(res => this.listValues(res));
-    } else if(this.userDataStore) {
-      this.appService.updateInDataStore('userDataStore', this.curNamespace, newValue)
-        .subscribe(res => this.listValues(res));
-    }
+
+
+    this.appService.updateInDataStore(this.storeVersion, this.curNamespace, newValue)
+      .subscribe(res => this.listValues(res));
+
 
     this.updateOk = "Successfully updated value";
   }
@@ -123,7 +118,7 @@ export class NamespaceComponent implements OnInit {
   updateList(AppNamespaces): void {
     this.AppNamespace = [];
     for (let i = 0; i < AppNamespaces.length; i++) {
-            this.AppNamespace.push(AppNamespaces[i]);
+      this.AppNamespace.push(AppNamespaces[i]);
     }
   }
 
@@ -140,17 +135,15 @@ export class NamespaceComponent implements OnInit {
       this.curNamespace = this.curNamespace.replace(new RegExp('([a-zA-Z0-9\_:-]+)/$'), '');
     }
 
-    if(this.dataStore) {
-      this.appService.getFromDataStore('dataStore', this.curNamespace)
-        .subscribe(res => this.updateList(res));
-    } else if(this.userDataStore) {
-      this.appService.getFromDataStore('userDataStore', this.curNamespace)
-        .subscribe(res => this.updateList(res));
-    }
+
+    this.appService.getFromDataStore(this.storeVersion, this.curNamespace)
+      .subscribe(res => this.updateList(res));
+
+
   }
 
   showNewButton(): void {
-    if(this.depth === 1) {
+    if (this.depth === 1) {
       this.showNew = true;
     } else {
       this.showNew = false;
@@ -158,7 +151,7 @@ export class NamespaceComponent implements OnInit {
   }
 
   showCreateNew(): void {
-    if(this.newKeyValue) {
+    if (this.newKeyValue) {
       this.newKeyValue = false;
     } else {
       this.newKeyValue = true;
@@ -168,13 +161,13 @@ export class NamespaceComponent implements OnInit {
   sendNewKeyValue(): void {
     var key: string = (<HTMLInputElement>document.getElementById("usr")).value;
     var tempValue: string = (<HTMLInputElement>document.getElementById("comment")).value;
-    
-    if(!key || !tempValue || key === "" || value === "") {
+
+    if (!key || !tempValue || key === "" || value === "") {
       alert("Empty key or value field, both needs to be filled out");
       return;
     }
 
-    if(this.AppNamespace.some(x=>x===key)) {
+    if (this.AppNamespace.some(x => x === key)) {
       alert("Key with that name already exists in namespace, choose a different name.");
       return;
     }
@@ -185,31 +178,25 @@ export class NamespaceComponent implements OnInit {
 
     this.newKeyValue = false;
 
-    if(this.encryptChecked) {
-      if(this.dataStore) {
-        this.appService.createNewEncrypted('dataStore', fullpath, value)
-          .subscribe(res => console.log(res));
-      } else if(this.userDataStore) {
-        this.appService.createNewEncrypted('userDataStore', fullpath, value)
-          .subscribe(res => console.log(res));
-      }
-    } else if(!this.encryptChecked) {
-      if(this.dataStore) {
-        this.appService.createNew('dataStore', fullpath, value)
-          .subscribe(res => console.log(res));
-      } else if(this.userDataStore) {
-        this.appService.createNew('userDataStore', fullpath, value)
-          .subscribe(res => console.log(res));
-      }
+    if (this.encryptChecked) {
+
+      this.appService.createNewEncrypted(this.storeVersion, fullpath, value)
+        .subscribe(res => console.log(res));
+
+    } else if (!this.encryptChecked) {
+
+      this.appService.createNew(this.storeVersion, fullpath, value)
+        .subscribe(res => console.log(res));
+
     }
     this.encryptChecked = false;
   }
 
   updateEncryptChecked(event): void {
-    if(event.target.checked) {
+    if (event.target.checked) {
       console.log("checked");
       this.encryptChecked = true;
-    } else if(!event.target.checked) {
+    } else if (!event.target.checked) {
       console.log("not checked");
       this.encryptChecked = false;
     }

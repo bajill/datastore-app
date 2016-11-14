@@ -2,8 +2,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpModule } from '@angular/http';
 
+import { NamespaceComponent } from './../../namespace/namespace.component';
 import { UserDatastoreComponent } from './user-datastore.component';
+import { AppService } from './../../app.service';
+
 
 describe('UserDatastoreComponent', () => {
   let component: UserDatastoreComponent;
@@ -11,7 +16,9 @@ describe('UserDatastoreComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserDatastoreComponent ]
+      declarations: [ UserDatastoreComponent, NamespaceComponent ],
+      providers: [ AppService ],
+      imports: [RouterTestingModule,  HttpModule]
     })
     .compileComponents();
   }));

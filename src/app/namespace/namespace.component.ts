@@ -18,8 +18,7 @@ export class NamespaceComponent implements OnInit {
   private newKeyValue: boolean = false;
   private showNew: boolean = false;
   private depth: number = 0;
-  private dataStore: boolean = false;
-  private userDataStore: boolean = false;
+
   private storeVersion;
   private encryptChecked: boolean = false;
   model = new AppNamespace('');
@@ -32,27 +31,32 @@ export class NamespaceComponent implements OnInit {
       console.log("DATASTORE");
     } else if (router.url === "/userdatastore") {
       this.storeVersion = "userDataStore";
-      console.log("USERDATASTORE" + this.userDataStore + this.dataStore);
+      console.log("USERDATASTORE" + this.storeVersion);
     }
+    //this.resetValues();
     this.loadList();
   }
 
   ngOnInit() {
   }
 
+  resetValues(): void {
+    this.AppNamespace = [];
+    this.curNamespace = '';
+    this.value = '';
+    this.metaData = '';
+    this.updateOk = '';
+    this.newKeyValue = false;
+    this.showNew = false;
+    this.depth = 0;
+  }
 
   loadList(): void {
-    console.log('loading');
-
+    console.log('loadingList');
     this.appService.getFromDataStore(this.storeVersion, '')
       .subscribe(res => this.updateList(res));
 
-    this.appService.getFromDataStore('userDataStore', '')
-      .subscribe(res => this.updateList(res));
-
   }
-
-
 
   loadChild(path: string): void {
     this.depth++;
@@ -74,10 +78,11 @@ export class NamespaceComponent implements OnInit {
   }
 
   loadMetaData(path: string): void {
-
-    this.appService.getFromDataStore(this.storeVersion, this.curNamespace + 'metaData')
-      .subscribe(res => this.listMetaData(res));
-
+    if (this.storeVersion === 'dataStore') {
+      this.appService.getFromDataStore(this.storeVersion, this.curNamespace + 'metaData')
+        .subscribe(res => this.listMetaData(res));
+    }
+    return;
   }
 
   loadValue(path: string): void {
@@ -120,7 +125,6 @@ export class NamespaceComponent implements OnInit {
     this.value = '';
     this.metaData = '';
     this.depth--;
-
     this.showNewButton();
     this.newKeyValue = false;
 
@@ -153,7 +157,7 @@ export class NamespaceComponent implements OnInit {
     var key: string = (<HTMLInputElement>document.getElementById("usr")).value;
     var tempValue: string = (<HTMLInputElement>document.getElementById("comment")).value;
 
-    if (!key || !tempValue || key === "" || value === "") {
+    if (!key || !tempValue || key === "" || tempValue === "") {
       alert("Empty key or value field, both needs to be filled out");
       return;
     }
@@ -166,19 +170,14 @@ export class NamespaceComponent implements OnInit {
     var value: string = JSON.stringify(tempValue);
     var fullpath: string = this.curNamespace;
     fullpath += key;
-
     this.newKeyValue = false;
 
     if (this.encryptChecked) {
-
       this.appService.createNewEncrypted(this.storeVersion, fullpath, value)
         .subscribe(res => console.log(res));
-
     } else if (!this.encryptChecked) {
-
       this.appService.createNew(this.storeVersion, fullpath, value)
         .subscribe(res => console.log(res));
-
     }
     this.encryptChecked = false;
   }

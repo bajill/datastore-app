@@ -44,7 +44,6 @@ export class NamespaceComponent implements OnInit {
   loadList(): void {
     console.log('loading');
 
-
     this.appService.getFromDataStore(this.storeVersion, '')
       .subscribe(res => this.updateList(res));
 
@@ -69,8 +68,6 @@ export class NamespaceComponent implements OnInit {
     }
 
     this.curNamespace += path + '/';
-
-
     this.appService.getFromDataStore(this.storeVersion, this.curNamespace)
       .subscribe(res => this.updateList(res));
 
@@ -85,8 +82,6 @@ export class NamespaceComponent implements OnInit {
 
   loadValue(path: string): void {
     this.curNamespace += path + '/';
-
-
     this.appService.getFromDataStore(this.storeVersion, this.curNamespace)
       .subscribe(res => this.listValues(res));
 
@@ -96,10 +91,8 @@ export class NamespaceComponent implements OnInit {
     var newValue = (<HTMLInputElement>document.getElementById("key")).value;
     console.log('update ' + newValue);
 
-
     this.appService.updateInDataStore(this.storeVersion, this.curNamespace, newValue)
       .subscribe(res => this.listValues(res));
-
 
     this.updateOk = "Successfully updated value";
   }
@@ -135,10 +128,8 @@ export class NamespaceComponent implements OnInit {
       this.curNamespace = this.curNamespace.replace(new RegExp('([a-zA-Z0-9\_:-]+)/$'), '');
     }
 
-
     this.appService.getFromDataStore(this.storeVersion, this.curNamespace)
       .subscribe(res => this.updateList(res));
-
 
   }
 

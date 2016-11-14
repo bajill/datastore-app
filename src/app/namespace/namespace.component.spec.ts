@@ -2,10 +2,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
+
 
 import { NamespaceComponent } from './namespace.component';
 import { AppService } from './../app.service';
-import {HttpModule} from '@angular/http';
+import { HttpModule } from '@angular/http';
+
+
+
 
 describe('NamespaceComponent', () => {
   let component: NamespaceComponent;
@@ -22,7 +27,7 @@ describe('NamespaceComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ NamespaceComponent ],
       providers: [ AppService ],
-      imports: [HttpModule]
+      imports: [HttpModule, RouterTestingModule ]
     })
     .compileComponents();
   }));

@@ -33,6 +33,7 @@ export class NamespaceComponent implements OnInit {
       this.storeVersion = "userDataStore";
       console.log("USERDATASTORE" + this.storeVersion);
     }
+    this.depth = 0;
     //this.resetValues();
     this.loadList();
   }

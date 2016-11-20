@@ -9,13 +9,13 @@ export class AppService {
 
   constructor(private http: Http) { }
 
-  private serverUrl = 'https://play.dhis2.org/dev/api';
+  private serverUrl = 'http://localhost:8082/api';
   private basicAuth = `Basic ${btoa('admin:district')}`;
 
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
   getFromDataStore(store: string, path: string): any {
-    console.log('load from store ' + path + store);
+    console.log('load from store ' + path + ' ' + store);
     this.headers.append('Authorization', 'Basic ' + btoa('admin:district'));
     return Observable.create(observer => {
       this.http

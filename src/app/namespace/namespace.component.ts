@@ -32,6 +32,10 @@ export class NamespaceComponent implements OnInit {
     } else if (router.url === "/userdatastore") {
       this.storeVersion = "userDataStore";
       console.log("USERDATASTORE" + this.storeVersion);
+    }else if(router.url === "/statistics"){
+      this.storeVersion = "dataStore";
+
+      return;
     }
     this.depth = 0;
     //this.resetValues();

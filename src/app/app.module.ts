@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ChartModule } from 'angular2-highcharts';
-
+import { DataTableModule } from 'angular2-datatable';
 
 import { AppService } from './app.service';
 
@@ -17,6 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { ChartComponent } from './chart/chart.component';
 import { DatastoreComponent } from './pages/datastore/datastore.component';
 import { UserDatastoreComponent } from './pages/user-datastore/user-datastore.component';
+import { TableComponent } from './table/table.component';
+
 
 
 @NgModule({
@@ -28,14 +30,16 @@ import { UserDatastoreComponent } from './pages/user-datastore/user-datastore.co
     StatisticsComponent,
     ChartComponent,
     DatastoreComponent,
-    UserDatastoreComponent
+    UserDatastoreComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    ChartModule
+    ChartModule,
+    DataTableModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

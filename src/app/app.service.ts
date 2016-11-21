@@ -9,7 +9,7 @@ export class AppService {
 
   constructor(private http: Http) { }
 
-  private serverUrl = 'http://localhost:8082/api';
+  private serverUrl = 'https://play.dhis2.org/dev/api';
   private basicAuth = `Basic ${btoa('admin:district')}`;
 
   private headers = new Headers({ 'Content-Type': 'application/json' });

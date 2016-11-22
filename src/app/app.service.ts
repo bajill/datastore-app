@@ -29,7 +29,7 @@ export class AppService {
   }
 
   updateInDataStore(store: string, path: string, value: string): any {
-    console.log("AppService, Path: " + path +  " Value: " + value);
+    console.log('AppService, Path: ' + path +  ' Value: ' + value);
     this.headers.append('Authorization', 'Basic ' + btoa('admin:district'));
     return Observable.create(observer => {
       this.http

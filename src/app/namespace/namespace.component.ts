@@ -97,17 +97,17 @@ export class NamespaceComponent implements OnInit {
   }
 
   updateInDataStore(): any {
-    var newValue = (<HTMLInputElement>document.getElementById("key")).value;
+    var newValue = (<HTMLInputElement>document.getElementById('key')).value;
     console.log('update ' + newValue);
 
     this.appService.updateInDataStore(this.storeVersion, this.curNamespace, newValue)
       .subscribe(res => this.listValues(res));
 
-    this.updateOk = "Successfully updated value";
+    this.updateOk = 'Successfully updated value';
   }
 
   listMetaData(metaData): any {
-    var key = "value";
+    var key = 'value';
     delete metaData[key];
     this.metaData = JSON.stringify(metaData, null, 2);
   }
@@ -167,7 +167,7 @@ export class NamespaceComponent implements OnInit {
     }
 
     if (this.AppNamespace.some(x => x === key)) {
-      alert("Key with that name already exists in namespace, choose a different name.");
+      alert('Key with that name already exists in namespace, choose a different name.');
       return;
     }
 

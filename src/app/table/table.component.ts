@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MetaData } from './meta-data';
 import { AppService } from './../app.service';
-import { AppNamespace } from './../namespace/namespace';
 
 
 @Component({
@@ -17,20 +16,19 @@ export class TableComponent implements OnInit {
   keyJson: string;
   metaData: MetaData[];
   metaPath: string;
-
+  metaDataObjects = [];
 
 
   constructor(private appService: AppService) { this.loadList(); }
-
 
   loadList(): void {
     this.appService.getFromDataStore('dataStore', '')
       .subscribe(res => this.updateList(res));
 
-
   }
 
   updateList(appNamespaces): void {
+    this.metaDataObjects = [];
     this.appNamespace = [];
     for (let i = 0; i < appNamespaces.length; i++) {
       this.appNamespace.push(appNamespaces[i]);
@@ -47,15 +45,18 @@ export class TableComponent implements OnInit {
   }
 
   getMetaData(key, namespace): void {
-    console.log(namespace);
+
     for (let i = 0 ; i < key.length; i++) {
       this.metaPath = namespace + '/' + key[i] + '/metaData';
       this.appService.getFromDataStore('dataStore', this.metaPath).subscribe(res => {
-        console.log(res);
+        //console.log(namespace);
+        //console.log(key[i]);
+        //console.log(res['created']);
+        //console.log(res['lastUpdated']);
+        this.metaDataObjects.push(namespace, key[i], res['created'], res['lastUpdated']);
       });
 
     }
-
   }
 
   ngOnInit() {

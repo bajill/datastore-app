@@ -18,6 +18,7 @@ import { ChartComponent } from './chart/chart.component';
 import { DatastoreComponent } from './pages/datastore/datastore.component';
 import { UserDatastoreComponent } from './pages/user-datastore/user-datastore.component';
 import { TableComponent } from './table/table.component';
+import { DataFilterPipe } from './data-filter.pipe';
 
 
 
@@ -31,7 +32,8 @@ import { TableComponent } from './table/table.component';
     ChartComponent,
     DatastoreComponent,
     UserDatastoreComponent,
-    TableComponent
+    TableComponent,
+    DataFilterPipe
   ],
   imports: [
     BrowserModule,

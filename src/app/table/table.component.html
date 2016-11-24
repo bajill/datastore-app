@@ -1,33 +1,33 @@
-      <div class="row">
-            <h2 class="col-xs-6"></h2>
-            <div class="col-xs-2">
-                <label class="label-control">Rows on page</label>
-                <select class="form-control input-sm" [(ngModel)]="rowsOnPage">
-                    <option ngValue="5">5</option>
-                    <option [ngValue]="10">10</option>
-                    <option ngValue="15">15</option>
-                </select>
-            </div>
-            <div class="col-xs-4">
-                <div class="row">
-                    <label class="col-xs-12 label-control">Sort by</label>
-                </div>
-                <div class="col-xs-6">
-                    <div class="row">
-                        <select class="form-control input-sm" [(ngModel)]="sortBy">
-                            <option ngValue="created">Created</option>
-                            <option ngValue="lasteUpdated">lastUpdated</option>
-                            <option [ngValue]="namespace">App Name</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-xs-6">
-                    <div class="row">
-                        <select class="form-control input-sm" [(ngModel)]="sortOrder">
-                            <option ngValue="asc">Ascending</option>
-                            <option ngValue="desc">Descending</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
+<table class="table table-striped" [mfData]="metaDataObjects" #mf="mfDataTable" [mfRowsOnPage]="4">
+    <thead>
+    <tr>
+        <th style="width: 25%">
+            <mfDefaultSorter by="appName">App Name</mfDefaultSorter>
+        </th>
+        <th style="width: 25%">
+            <mfDefaultSorter by="key">Key</mfDefaultSorter>
+        </th>
+        <th style="width: 25%">
+            <mfDefaultSorter by="created">Created</mfDefaultSorter>
+        </th>
+        <th style="width: 25%">
+            <mfDefaultSorter by="changed">Last Updated</mfDefaultSorter>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of mf.data">
+        <td style="text-align:left">{{item.appName}}</td>
+        <td style="text-align:left">{{item.key}}</td>
+        <td style="text-align:left">{{item.created}}</td>
+        <td style="text-align:left">{{item.changed}}</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="5">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+        </td>
+    </tr>
+    </tfoot>
+</table>

@@ -16,10 +16,13 @@ export class TableComponent implements OnInit {
   keyJson: string;
   metaData: MetaData[];
   metaPath: string;
+
   metaDataObjects = [];
+  public data;
 
-
-  constructor(private appService: AppService) { this.loadList(); }
+  constructor(private appService: AppService) {
+    this.loadList();
+  }
 
   loadList(): void {
     this.appService.getFromDataStore('dataStore', '')
@@ -39,9 +42,7 @@ export class TableComponent implements OnInit {
       this.appService.getFromDataStore('dataStore', this.appNamespace[i]).subscribe(res => { this.keys.push(res);
         this.getMetaData(res, this.appNamespace[i]);
       });
-
     }
-
   }
 
   getMetaData(key, namespace): void {
@@ -53,9 +54,8 @@ export class TableComponent implements OnInit {
         //console.log(key[i]);
         //console.log(res['created']);
         //console.log(res['lastUpdated']);
-        this.metaDataObjects.push(namespace, key[i], res['created'], res['lastUpdated']);
+        this.metaDataObjects.push(new MetaData(namespace, key[i], res['created'], res['lastUpdated']));
       });
-
     }
   }
 

@@ -34,25 +34,25 @@ def generateUserData():
     return namespaces
 
 def mockDataStore():
-    dataStoreURL = "http://localhost:8082/api/25/dataStore/"
+    dataStoreURL = "https://play.dhis2.org/dev/api/25/dataStore/"
     namespaces = generateNamespace()
 
     for name in namespaces:
         dataStoreURL += name
         payload = generatePayload()
         doRequest(dataStoreURL, payload)
-        dataStoreURL = "http://localhost:8082/api/25/dataStore/"
+        dataStoreURL = "https://play.dhis2.org/dev/api/25/dataStore/"
         
 
 def mockUserDataStore():
-    userDataStoreURL = "http://localhost:8082/api/25/userDataStore/"
+    userDataStoreURL = "https://play.dhis2.org/dev/api/25/userDataStore/"
     namespaces = generateUserData()
 
     for name in namespaces:
         userDataStoreURL += name
         payload = generatePayload()
         doRequest(userDataStoreURL, payload)
-        userDataStoreURL = "http://localhost:8082/api/25/userDataStore/"
+        userDataStoreURL = "https://play.dhis2.org/dev/api/25/userDataStore/"
 
 
 if len(sys.argv) != 2:

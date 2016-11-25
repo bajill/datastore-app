@@ -19,6 +19,7 @@ import { UserDatastoreComponent } from './pages/user-datastore/user-datastore.co
 import { TableComponent } from './table/table.component';
 import { DataFilterPipe } from './data-filter.pipe';
 import { OverviewComponent } from './pages/overview/overview.component';
+import { CssCarouselComponent } from './css-carousel/css-carousel.component';
 
 
 
@@ -33,7 +34,8 @@ import { OverviewComponent } from './pages/overview/overview.component';
     UserDatastoreComponent,
     TableComponent,
     DataFilterPipe,
-    OverviewComponent
+    OverviewComponent,
+    CssCarouselComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-<table class="table table-striped" [mfData]="metaDataObjects" #mf="mfDataTable" [mfRowsOnPage]="4">
+<table class="table table-striped" [mfData]="metaDataObjects | dataFilter: filterQuery" #mf="mfDataTable" [mfRowsOnPage]="4">
     <thead>
            <tr>
                     <th colspan="5">

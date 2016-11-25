@@ -16,6 +16,7 @@ export class TableComponent implements OnInit {
   keyJson: string;
   metaData: MetaData[];
   metaPath: string;
+  public filterQuery = '';
 
   metaDataObjects = [];
   public data;

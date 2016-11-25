@@ -11,7 +11,6 @@ import { AppComponent } from './app.component';
 import { NamespaceComponent } from './namespace/namespace.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
-import { StatisticsComponent } from './pages/statistics/statistics.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ChartComponent } from './chart/chart.component';
@@ -19,6 +18,7 @@ import { DatastoreComponent } from './pages/datastore/datastore.component';
 import { UserDatastoreComponent } from './pages/user-datastore/user-datastore.component';
 import { TableComponent } from './table/table.component';
 import { DataFilterPipe } from './data-filter.pipe';
+import { OverviewComponent } from './pages/overview/overview.component';
 
 
 
@@ -28,12 +28,12 @@ import { DataFilterPipe } from './data-filter.pipe';
     NamespaceComponent,
     HomeComponent,
     AboutComponent,
-    StatisticsComponent,
     ChartComponent,
     DatastoreComponent,
     UserDatastoreComponent,
     TableComponent,
-    DataFilterPipe
+    DataFilterPipe,
+    OverviewComponent
   ],
   imports: [
     BrowserModule,

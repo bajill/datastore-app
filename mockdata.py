@@ -22,9 +22,9 @@ def generatePayload():
     return payload
 
 def generateNamespace():
-    namespaces = ["arne/key", "kjetil/key", "per/key", "turid/key", "alfred/key", "joakim/key", "berit/key",
-            "arne/key2", "kjetil/key2", "per/key2", "turid/key2", "alfred/key2", "joakim/key2", "berit/key2",
-            "arne/key3", "kjetil/key3", "per/key3", "turid/key3", "alfred/key3", "joakim/key3", "berit/key3"]
+    namespaces = ["new-app/key", "app-test/key", "third-app/key", "turid/key", "alfred/key", "joakim/key", "berit/key",
+            "new-app/key2", "app-test/key2", "third-app/key2", "turid/key2", "alfred/key2", "joakim/key2", "berit/key2",
+            "new-app/key3", "app-test/key3", "third-app/key3", "turid/key3", "alfred/key3", "joakim/key3", "berit/key3"]
     return namespaces
 
 def generateUserData():

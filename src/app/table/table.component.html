@@ -1,39 +1,43 @@
-<table class="table table-striped" [mfData]="metaDataObjects | dataFilter: filterQuery" #mf="mfDataTable" [mfRowsOnPage]="4">
-    <thead>
-           <tr>
-                    <th colspan="1">
-                        Filter by App Name:
-                        <input class="form-control" [(ngModel)]="filterQuery"/>
-                    </th>
-                </tr>
-    <tr>
-        <th style="width: 25%">
+<div class="container-fluid">
+  <div class="col-xs-12">
+    <table class="table table-striped" [mfData]="metaDataObjects | dataFilter: filterQuery" #mf="mfDataTable" [mfRowsOnPage]="10">
+      <thead>
+        <tr>
+          <th colspan="1">
+            Filter by App Name:
+            <input class="form-control" [(ngModel)]="filterQuery" />
+          </th>
+        </tr>
+        <tr>
+          <th style="width: 25%">
             <mfDefaultSorter by="appName">App Name</mfDefaultSorter>
-        </th>
-        <th style="width: 25%">
+          </th>
+          <th style="width: 25%">
             <mfDefaultSorter by="key">Key</mfDefaultSorter>
-        </th>
-        <th style="width: 25%">
+          </th>
+          <th style="width: 25%">
             <mfDefaultSorter by="created">Created</mfDefaultSorter>
-        </th>
-        <th style="width: 25%">
+          </th>
+          <th style="width: 25%">
             <mfDefaultSorter by="changed">Last Updated</mfDefaultSorter>
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let item of mf.data">
-        <td style="text-align:left">{{item.appName}}</td>
-        <td style="text-align:left">{{item.key}}</td>
-        <td style="text-align:left">{{item.created}}</td>
-        <td style="text-align:left">{{item.changed}}</td>
-    </tr>
-    </tbody>
-    <tfoot>
-    <tr>
-        <td colspan="5">
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of mf.data">
+          <td style="text-align:left">{{item.appName}}</td>
+          <td style="text-align:left">{{item.key}}</td>
+          <td style="text-align:left">{{item.created}}</td>
+          <td style="text-align:left">{{item.changed}}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5">
             <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
-        </td>
-    </tr>
-    </tfoot>
-</table>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

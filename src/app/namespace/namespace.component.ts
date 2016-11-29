@@ -32,8 +32,8 @@ export class NamespaceComponent implements OnInit {
     } else if (router.url === "/userdatastore") {
       this.storeVersion = "userDataStore";
       console.log("USERDATASTORE" + this.storeVersion);
-    }else if(router.url === "/statistics"){
-      
+    } else if (router.url === "/statistics") {
+
       return;
     }
     this.depth = 0;
@@ -100,8 +100,13 @@ export class NamespaceComponent implements OnInit {
     var newValue = (<HTMLInputElement>document.getElementById('key')).value;
     console.log('update ' + newValue);
 
-    this.appService.updateInDataStore(this.storeVersion, this.curNamespace, newValue)
-      .subscribe(res => this.listValues(res));
+    if (newValue !== this.value) {
+      this.appService.updateInDataStore(this.storeVersion, this.curNamespace, newValue)
+        .subscribe(res => this.listValues(res));
+    } else {
+      this.updateOk = "No changes detected, did not update value";
+      return;
+    }
 
     this.updateOk = 'Successfully updated value';
   }

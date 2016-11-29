@@ -21,6 +21,14 @@
   width: 95px;
 }
 
+.btn-info {
+    padding-bottom: 5px;
+}
+
+.update-btn {
+    float: left;
+}
+
 .edit-group {
     float: right;
 }
@@ -42,4 +50,9 @@
 #newKeyLabel {
     font-weight: bold;
     font-size: 24px;
+}
+
+pre {
+    text-align: center;
+    float: right;
 }

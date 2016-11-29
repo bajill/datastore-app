@@ -1,48 +1,57 @@
 <div class="app">
-    <div class="curNamespace">
-        <h3>/{{curNamespace}}</h3>
-    </div>
-    <div class="container">
-        <pre>
-            {{metaData}}
-        </pre>
-        <div class="button-row row">
-            <span *ngIf="showNew">
+  <div class="curNamespace">
+    <h3>/{{curNamespace}}</h3>
+  </div>
+  <div class="container">
+    <div class="button-row row">
+      <span *ngIf="showNew">
                 <button type="button" class="btn btn-primary btn-success" (click)="showCreateNew()">New</button>
             </span>
-            <button type="button" class="btn btn-primary btn-back" (click)="loadBack()">Back</button>
-        <div>
-    </div>
-    <div id="newKeyForm" *ngIf="newKeyValue">
+      <button type="button" class="btn btn-primary btn-back" (click)="loadBack()">Back</button>
+      <div>
+      </div>
+      <div id="newKeyForm" *ngIf="newKeyValue">
         <label id="newKeyLabel">Add new key/value to this namespace</label>
         <div class="form-group">
-            <label for="usr">Key:</label>
-            <input type="text" class="form-control" id="usr">
+          <label for="usr">Key:</label>
+          <input type="text" class="form-control" id="usr">
         </div>
         <div class="form-group">
-            <label for="comment">Value:</label>
-            <textarea class="form-control" rows="10" id="comment"></textarea>
+          <label for="comment">Value:</label>
+          <textarea class="form-control" rows="10" id="comment"></textarea>
         </div>
         <div class="checkbox">
-            <label><input id="encrypt" type="checkbox" value="" (change)="updateEncryptChecked($event)">Encrypt</label>
+          <label><input id="encrypt" type="checkbox" value="" (change)="updateEncryptChecked($event)">Encrypt</label>
         </div>
         <button type="button" class="btn btn-primary btn-success" (click)="sendNewKeyValue()">Send</button>
-    </div>
-    <br>
-    <div *ngIf="value">
-        <div id ="update">
-            {{updateOk}}
+      </div>
+      <br>
+      <div *ngIf="value">
+        <div id="update">
+          {{updateOk}}
         </div>
-        <div class="form-group edit-group">
-            <button type="submit" class="btn btn-info" (click)="updateInDataStore()">Update</button>
-        </div>       
-        <textarea class="form-control" rows="20" id="key">{{value}}</textarea>     
-    </div>
-    <div class="container">
+        <div class="container-fluid">
+          <div class="update-btn pull-left" class="row">
+            <button type="submit" class="btn btn-info update-btn" (click)="updateInDataStore()">Update</button>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-7 pull-left">
+              <textarea class="form-control" rows="20" id="key">{{value}}</textarea>
+            </div>
+            <div class="col-md-5 pull-right">
+              <pre>
+                {{metaData}}
+              </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
         <ul class="list-group">
-            <li class="list-group-item" *ngFor="let app of AppNamespace;">
-                <div class='li-elem' (click)="loadChild(app)">{{app}}</div>
-            </li>
+          <li class="list-group-item" *ngFor="let app of AppNamespace;">
+            <div class='li-elem' (click)="loadChild(app)">{{app}}</div>
+          </li>
         </ul>
+      </div>
     </div>
-</div>

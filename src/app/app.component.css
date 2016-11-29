@@ -75,3 +75,24 @@ a {
 body {
     padding-top: 58px;
 }
+
+
+
+footer {
+  
+
+
+   left:0px;
+   bottom:0px;
+   height:55px;
+   width:100%;
+   background:#333;
+     color: white;
+
+}
+#footer-content {
+
+   text-align: center;
+   padding: 30px;
+     max-width: 1080px;
+}

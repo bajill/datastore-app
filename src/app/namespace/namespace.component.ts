@@ -114,7 +114,7 @@ export class NamespaceComponent implements OnInit {
   listMetaData(metaData): any {
     var key = 'value';
     delete metaData[key];
-    this.metaData = JSON.stringify(metaData, null, 2);
+    this.metaData = JSON.stringify(metaData, null, 2).replace(/[{}]/g, '');
   }
 
   listValues(AppNamespaces): void {

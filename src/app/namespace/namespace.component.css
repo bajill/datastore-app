@@ -32,7 +32,9 @@
 .edit-group {
     float: right;
 }
-
+.update-btn {
+    margin-left: 15px;
+}
 #update p {
     text-align: center;
     font-style: bold;

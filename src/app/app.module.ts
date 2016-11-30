@@ -10,7 +10,6 @@ import { AppService } from './app.service';
 import { AppComponent } from './app.component';
 import { NamespaceComponent } from './namespace/namespace.component';
 import { HomeComponent } from './pages/home/home.component';
-import { AboutComponent } from './pages/about/about.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { DatastoreComponent } from './pages/datastore/datastore.component';
@@ -27,7 +26,6 @@ import { CssCarouselComponent } from './css-carousel/css-carousel.component';
     AppComponent,
     NamespaceComponent,
     HomeComponent,
-    AboutComponent,
     DatastoreComponent,
     UserDatastoreComponent,
     TableComponent,

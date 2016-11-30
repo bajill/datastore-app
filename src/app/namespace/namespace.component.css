@@ -41,12 +41,14 @@
 }
 
 #newKeyForm {
-    background-color: lightgray;
-    padding: 20px;
+    background-color: #e6e6e6;
+    padding-top: 15px;
+
     width: 80%;
     margin: 0 auto;
+    margin-top: 15px;
     border-radius: 25px;
-    border: 2px solid grey;
+    border: 2px solid #cccccc;
 }
 
 #newKeyLabel {
@@ -64,4 +66,3 @@ pre {
     color: #215e8c;
     cursor: pointer;
 }
-

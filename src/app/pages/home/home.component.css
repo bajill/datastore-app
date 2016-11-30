@@ -11,3 +11,12 @@ font-size: 100px;
 .carousel-control {
     background-image: 0;
 }
+/*
+app-css-carousel p {
+text-align: justify;
+}*/
+#infotext {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+}

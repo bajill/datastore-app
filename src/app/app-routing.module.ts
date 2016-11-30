@@ -1,7 +1,6 @@
 import { NgModule }     from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { AboutComponent }  from './pages/about/about.component';
 import { HomeComponent } from './pages/home/home.component';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { NamespaceComponent } from './namespace/namespace.component';
@@ -15,7 +14,6 @@ import { UserDatastoreComponent } from './pages/user-datastore/user-datastore.co
       { path: 'datastore', component: DatastoreComponent },
       { path: 'userdatastore', component: UserDatastoreComponent },
       { path: 'overview', component: OverviewComponent },
-      { path: 'about', component: AboutComponent },
       { path: 'home', component: HomeComponent },
       { path: '', component: HomeComponent},
       { path: 'namespace', component: NamespaceComponent}

@@ -1,6 +1,6 @@
 # DatastoreApp
 
-This is a project in INF5750 at University of Oslo, fall 2016.  Contributers was Johan Graucob, Morten Johannessen, Kenneth Frisvold. 
+This is a project in INF5750 at University of Oslo, fall 2016. This is an app for the open source software platform DHIS2(https://www.dhis2.org/).   Contributers was Johan Graucob, Morten Johannessen, Kenneth Frisvold. 
 
 # How to install and run project
 

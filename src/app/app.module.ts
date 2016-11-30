@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { ChartModule } from 'angular2-highcharts';
 import { DataTableModule } from 'angular2-datatable';
 
 import { AppService } from './app.service';
@@ -38,7 +37,6 @@ import { CssCarouselComponent } from './css-carousel/css-carousel.component';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    ChartModule,
     DataTableModule
   ],
   providers: [AppService],

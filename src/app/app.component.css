@@ -81,7 +81,7 @@ body {
 footer {
   
 
-
+   
    left:0px;
    bottom:0px;
    height:55px;
@@ -92,7 +92,13 @@ footer {
 }
 #footer-content {
 
-   text-align: center;
-   padding: 30px;
+
+padding-top: 10px;
      max-width: 1080px;
+}
+
+#footer-content p {
+   text-align: center;
+   vertical-align: center;
+
 }

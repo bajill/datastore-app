@@ -2,3 +2,12 @@ h2 p {
     color: black;
     text-align: center;
 }
+
+.carousel-control .icon-next, .carousel-control .icon-prev {
+color: black;
+font-size: 100px;
+}
+
+.carousel-control {
+    background-image: 0;
+}

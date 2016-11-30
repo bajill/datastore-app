@@ -96,11 +96,24 @@ export class NamespaceComponent implements OnInit {
 
   }
 
+  isJsonString(str): boolean {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
+  }
+
   updateInDataStore(): any {
     var newValue = (<HTMLInputElement>document.getElementById('key')).value;
     console.log('update ' + newValue);
 
-    if (newValue !== this.value) {
+    if(!this.isJsonString(newValue)) {
+      this.updateOk = "Updated to non-valid json, please check your syntax";
+      return;
+    }
+    else if (newValue !== this.value) {
       this.appService.updateInDataStore(this.storeVersion, this.curNamespace, newValue)
         .subscribe(res => this.listValues(res));
     } else {

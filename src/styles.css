@@ -8,8 +8,26 @@ body, html {
 .pagination li {
     display: inline;
     padding: 2px;
+    font-weight: bold;
 }
 
 .pull-right {
     float:right;
+}
+
+.carousel {
+    border: solid;
+    border-color: #215e8c;
+    border-width: 3px;
+   
+}
+.carousel-control .icon-next, .carousel-control .icon-prev {
+color: black;
+font-size: 100px;
+margin: 0px;
+padding: 0px;
+}
+
+.carousel-control.right, .carousel-control.left{
+    background-image: none;
 }

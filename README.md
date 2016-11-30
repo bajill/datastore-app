@@ -1,6 +1,14 @@
 # DatastoreApp
 
+This is a project in INF5750 at University of Oslo, fall 2016.  Contributers was Johan Graucob, Morten Johannessen, Kenneth Frisvold. 
+
+# How to install and run project
+
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.19-3.
+
+## Install dependencies
+
+Run `npm install` in root directory. Npm will automatically install all dependencies.
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

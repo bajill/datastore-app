@@ -58,3 +58,10 @@ pre {
     text-align: center;
     float: right;
 }
+
+#list-text {
+    font-weight: bold;
+    color: #215e8c;
+    cursor: pointer;
+}
+

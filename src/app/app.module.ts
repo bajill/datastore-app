@@ -13,7 +13,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { ChartComponent } from './chart/chart.component';
 import { DatastoreComponent } from './pages/datastore/datastore.component';
 import { UserDatastoreComponent } from './pages/user-datastore/user-datastore.component';
 import { TableComponent } from './table/table.component';
@@ -29,7 +28,6 @@ import { CssCarouselComponent } from './css-carousel/css-carousel.component';
     NamespaceComponent,
     HomeComponent,
     AboutComponent,
-    ChartComponent,
     DatastoreComponent,
     UserDatastoreComponent,
     TableComponent,
